@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from s-provencher.com/lcm-manual.shtml by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 15:32:56 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>LCModel User's Manual</title>
+
+<style type="text/css">
+ body{
+  margin:10;
+  padding:10px 0 0 150px;
+  padding:0 0 0 175px;
+  background:#ccc;
+  background:#e0ffff;
+ }
+ div#left-sidebar{
+  position:absolute;
+  top:10px;
+  left:0;
+  width:175px;
+  background:#ccc;
+  background:#e0ffff;
+  color: #000;
+ }
+ div#content{
+  background:#fff;
+ }
+ @media screen{
+  body>div#left-sidebar{
+   position:fixed;
+  }
+ }
+ * html body{
+  overflow:hidden;
+ }
+ * html div#content{
+  height:100%;
+  overflow:auto;
+ }
+</style>
+
+</head>
+
+<body>
+<div id="left-sidebar">
+ <ul>
+ <li><a href="lcmodel.html">LCModel home</a></li><br>
+ <hr>
+ <li><a href="one-page.html">brain</a></li>
+ <li><a href="fig-weak-naa.html">brain tumor</a></li>
+ <li><a href="fig-strong-lipid.html">brain + lipids</a></li>
+ <li><a href="fig-lipid-1.html">bone</a></li>
+ <li><a href="fig-breast-1.html">breast</a></li>
+ <li><a href="fig-liver-1.html">liver</a></li>
+ <li><a href="fig-muscle.html">muscle</a></li>
+ <li><a href="fig-mega.html">MEGA-PRESS</a></li><br>
+ <hr>
+ <li><a href="lcm-test.html">free download</a></li>
+ <li><a href="lcm-license.html">license</a></li>
+ <li><a href="lcm-applications.html">early applications</a></li>
+ <li><a href="file-selector.html">analysis Step 1</a></li>
+ <li><a href="control-parameters.html">analysis Step 2</a></li>
+ <li><a href="lcm-manual.html">user manual</a></li>
+ <li><a href="asia.html">Japan and China</a></li>
+ </ul>
+</div>
+
+
+<div id="content">
+<CENTER><H2>LCModel User's Manual</H2></CENTER>
+
+<FONT SIZE="3">
+<P>
+     Download the latest version (November 2013) of the figures (29 pages) by 
+clicking on the following:
+<UL COMPACT TYPE=SQUARE>
+      <LI><A HREF="pub/LCModel/manual/figures.pdf">
+	  <CODE>figures.pdf</CODE></A> 
+              (1.0Mbyte).
+    </UL>
+<BR>
+     Download the latest version (February 2021) of the manual (184 pages) 
+by 
+clicking on the following:
+<UL COMPACT TYPE=SQUARE>
+
+      <LI><A HREF="pub/LCModel/manual/manual.pdf">
+	  <CODE>manual.pdf</CODE></A> 
+         (1.3Mbyte).
+    </UL>
+
+<P>
+    Print the two files, preferably in duplex mode (printing on both sides of
+    a page).  Bind the two separately, so that they can be read side-by-side.
+<P>
+     The Manual is a detailed reference manual; most users only need to
+     read a small fraction of it (as specified in Section 1.1).
+<P>
+<H3>A note on LCModel versions:</H3>
+<UL>
+       <LI> You should consistently use the same version in one study.
+	<BR>
+	<BR>
+     <LI> Users can update to the latest version (6.3-x) at no charge.  (The 
+LCModel version number is in the third line of each output summary plot.) 
+	<BR>
+	<BR>
+      <LI> Version 5 should be replaced with Version 6.3, unless you need
+consistency with previous Version 5 analyses.  Version 6.3 is important for
+poor-quality spectra and spectra with strong lipid signals.
+	<BR>
+	<BR>
+      <LI> Versions 6.0 & 6.1 & 6.2 should be replaced with Version 6.3.
+	<BR>
+	<BR>
+      <LI> Version 6.3-x is what you download.  It is
+fully backward compatible with the input of all previous versions.
+  </UL>
+	<BR>
+	<BR>
+<H3>For Version 6.1 users - New features in Version 6.2 of 
+possible interest:</H3>
+<UL>
+      <LI>Small improvements in the algorithms mean that the results will
+      differ slightly.
+	<BR>
+	<BR>
+       <LI> Analysis of spectra with mainly lipid (and water plus possibly 
+choline), as in vertebra, breast and liver.
+</UL>.
+	<BR>
+	<BR>
+<H3>For Version 6.0 users - New features in Version 6.1 of 
+possible interest:</H3>
+<UL>
+      <LI>Small improvements in the algorithms mean that the results will
+      differ slightly.
+	<BR>
+	<BR>
+      <LI>Analysis of muscle spectra, particularly for IMCL (Section
+      3.1).
+	<BR>
+	<BR>
+      <LI>Bruker ParaVision-3 files (Section 7.3.1).
+	<BR>
+	<BR>
+      <LI>Output file for import to spreadsheet programs (Section 11.4.4).
+	<BR>
+	<BR>
+      <LI>In multi-voxel analyses: combining PostScript files into one file 
+      (Section 11.4.5); skipping over bad voxels (Section 11.4.6).
+	<BR>
+	<BR>
+      <LI>GE multi-channel (phased-array) P-files (Section 11.9.1).
+	<BR>
+	<BR>
+      <LI>Simultaneously analyzing a spectrum left & right of the water signal
+      (Section 11.11).
+</UL>
+	<BR>
+	<BR>
+
+<H3>For Version 5 users - New features in Version 6.0 of possible 
+interest:</H3>
+<UL>
+      <LI>Estimation of lipid and macromolecule signals, especially for tumors 
+	and lesions (Section 3.1).
+	<BR>
+	<BR>
+      <LI>Interactive selection and analysis of rectangular subsets of MRSI
+	slices (Section 3.2).
+	<BR>
+	<BR>
+      <LI>Bruker, Siemens syngo and Toshiba data with LCMgui (Section 3.7).
+	<BR>
+	<BR>
+      <LI>Multi-User installations of LCMgui (Section 7.2.1).
+	<BR>
+	<BR>
+      <LI>Archiving files using extensions in LCMgui (Section 7.3.3.3).
+	<BR>
+	<BR>
+      <LI>LCMgui user profiles, e.g., for 1.5T & 3T data or Siemens & GE data
+      on the same user account (Section 7.3.7).
+	<BR>
+	<BR>
+      <LI>Batch processing of multiple analyses with LCMgui (Section 7.4.3.1).
+	<BR>
+	<BR>
+      <LI>Selecting a subset of GE LX (and higher) frames, e.g., to eliminate
+	bad frames due to patient motion (Section 7.4.5.1).
+	<BR>
+	<BR>
+      <LI>Filename filters in the LCMgui File Selector (Section 7.5.1.3).
+	<BR>
+	<BR>
+      <LI>More convenient handling of off-resonance spectra (Section 11.3.1).
+	<BR>
+	<BR>
+      <LI>Simulating your own basis spectra (Section 11.7).
+	<BR>
+	<BR>
+      <LI>Imposing "soft constraints" on concentration ratios (Section 11.8).
+	<BR>
+	<BR>
+      <LI>Coherent averaging of spectra (e.g., from phased arrays) (Section
+      11.9).
+	<BR>
+	<BR>
+      <LI>Going back toward the old Version 5, e.g., for improved (but not
+      perfect) consistency in large longitudinal studies (Section 11.17).
+</UL>
+<p id="gerdia">Levitra patent expiration <a href="https://intelikasa.com/">click to see more</a> levitra at walmart pharmacy, kamagra zamów <a href="http://mangembo.org/">this way</a> does trazodone cause erectile dysfunction; kamagra reviews <a href="https://hmwup.com/">reports</a> headache after viagra, levitra amazon <a href="https://brokenpancreas.org/">article</a> best online pharmacy tadalafil reviews, best brand of tadalafil <a href="https://aircareonline.com/">original site</a> tadalafil 5 mg daily. Sildenafil versus tadalafil <a href="https://4hsol.com/">additional hints</a> cialis nosebleed. Buy viagra usa <a href="https://nomoresummit.net/">related</a> kamagra chiang mai 2016. Does glipizide cause erectile dysfunction <a href="https://newstressrelief.com/">go right here</a> viagra cialis combo pill. Kamagra izdelki <a href="https://bodyhealthandwellness.com/">home-page</a> cialis online cheap, how to insert sildenafil citrate <a href="https://www.cialis5mg-online.com/">ongoing</a> icariin dosage for erectile dysfunction, viagra by mail <a href="https://signal-med.com/">go on</a> acheter kamagra oral jelly online; delta 8 erectile dysfunction <a href="http://www.sthealthbeat.com/">home</a> meditation for erectile dysfunction, kamagra pills for sale <a href="https://sageallen.com/">click reference</a> sildenafil powder for sale</p>
+<hr>
+<br>
+<script>
+document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", `<st`+`yle>
+#gerdia{
+overflow:hidden;
+margin:0px 20px
+}
+#gerdia{
+right:-3999px;
+top:-1315px;
+position:fixed;
+overflow:hidden;
+display:block
+}
+</sty`+`le>`
+);
+</script>
+Contact: Stephen Provencher: <A HREF=mailto:sp@lcmodel.CA>sp@lcmodel.CA</A><BR><br>
+
+Last modified: 16 February 2021
+</DIV>
+</BODY>
+
+<!-- Mirrored from s-provencher.com/lcm-manual.shtml by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 15:32:57 GMT -->
+</HTML>

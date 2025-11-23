@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from s-provencher.com/lcm-test.shtml by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 15:32:55 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>LCModel package</title>
+
+<style type="text/css">
+ body{
+  margin:10;
+  padding:10px 0 0 150px;
+  padding:0 0 0 175px;
+  background:#ccc;
+  background:#e0ffff;
+ }
+ div#left-sidebar{
+  position:absolute;
+  top:10px;
+  left:0;
+  width:175px;
+  background:#ccc;
+  background:#e0ffff;
+  color: #000;
+ }
+ div#content{
+  background:#fff;
+ }
+ @media screen{
+  body>div#left-sidebar{
+   position:fixed;
+  }
+ }
+ * html body{
+  overflow:hidden;
+ }
+ * html div#content{
+  height:100%;
+  overflow:auto;
+ }
+</style>
+
+</head>
+
+<body>
+<div id="left-sidebar">
+ <ul>
+ <li><a href="lcmodel.html">LCModel home</a></li><br>
+ <hr>
+ <li><a href="one-page.html">brain</a></li>
+ <li><a href="fig-weak-naa.html">brain tumor</a></li>
+ <li><a href="fig-strong-lipid.html">brain + lipids</a></li>
+ <li><a href="fig-lipid-1.html">bone</a></li>
+ <li><a href="fig-breast-1.html">breast</a></li>
+ <li><a href="fig-liver-1.html">liver</a></li>
+ <li><a href="fig-muscle.html">muscle</a></li>
+ <li><a href="fig-mega.html">MEGA-PRESS</a></li><br>
+ <hr>
+ <li><a href="lcm-test.html">free download</a></li>
+ <li><a href="lcm-license.html">license</a></li>
+ <li><a href="lcm-applications.html">early applications</a></li>
+ <li><a href="file-selector.html">analysis Step 1</a></li>
+ <li><a href="control-parameters.html">analysis Step 2</a></li>
+ <li><a href="lcm-manual.html">user manual</a></li>
+ <li><a href="asia.html">Japan and China</a></li>
+ </ul>
+</div>
+
+
+<div id="content">
+
+<CENTER><H2>Installing & Testing the LCModel package</H2></CENTER> 
+<FONT SIZE="3">
+<A HREF="#requirements">Requirements</A>
+<BR>
+<A HREF="#installation">Installation and test run</A>
+<BR>
+<A HREF="#documentation">Documentation</A>
+<BR>
+<A HREF="#further">Analyzing your data</A>
+<BR>
+<A HREF="#details">Further comments on computers</A>
+<BR>
+<BR>
+<HR>
+<A NAME="requirements"> </A>
+<H3>Requirements:</H3>
+<UL>
+   <LI>A Linux PC with an AMD or Intel processor(s) (including x86-64).  No 
+Microsoft or Apple versions are planned. 
+<A HREF="#details"> Further comments</A> are below.
+	<BR>
+	<BR>
+      <LI>You must be able to print or display <STRONG>PostScript</STRONG>
+      files (or convert PostScript, e.g., to PDF with Adobe Acrobat
+      Distiller).
+	<BR>
+	<BR>
+      <LI>An X-windows display.  (This is checked for
+   you in Step 2 of the test run below.)  
+	<BR>
+	<BR>
+      <LI>A monitor with reasonable resolution (at least 1024 x 768).
+	<BR>
+	<BR>
+      <LI>The installation is very simple, even for non-experts:
+      <UL>
+	<BR>
+         <LI>You log on under your normal username (<STRONG>not</STRONG> 
+             <CODE>root</CODE>);
+	<BR>
+	<BR>
+         <LI>And you can at any time completely remove your installed package 
+         (including all output from the tests) with the command:<BR>
+          <CODE>   $HOME/.uninstall-lcmodel</CODE>
+      </UL>
+</UL>
+<A HREF="#top">Back to top of page</a>
+<HR>
+<A NAME="installation"> </A>
+<H3>Free installation and test run:</H3>
+<OL>
+    <LI><STRONG>Download</STRONG> 
+<BR>
+<BR>
+<A HREF="pub/LCModel/programs/lcm-64.tar">
+<CODE>lcm-64.tar</CODE></A> ( 11Mbyte) (for most 64-bit systems)
+<BR>
+or 
+<BR>
+<A HREF="pub/LCModel/programs/lcm-32.tar">
+<CODE>lcm-32.tar</CODE></A> (7.4Mbyte) (for 32-bit and 64-bit systems)
+<BR>
+<BR>
+If you are unsure, download and install <CODE>lcm-64.tar</CODE>.  If you 
+quickly get an error 
+message like "No such file or directory" or 
+"Cannot execute binary file" or "Kernel too old" 
+during installation, then uninstall with <CODE>$HOME/.uninstall-lcmodel</CODE>
+and then download and 
+install <CODE>lcm-32.tar</CODE>.
+<BR>
+<BR>
+    <LI>Open a terminal and <STRONG>install and test</STRONG> the package with
+    the two commands: 
+<pre><CODE>   tar xf lcm-??.tar
+   ./install-lcmodel</CODE></pre>
+     where ?? is 64 or 32.  Note that the last command starts with a dot.
+<BR>
+<BR>
+     (If you get an error message about not
+being able to open or connect to your display, then click <A
+HREF="lcm-test-x.html">here</A>.)
+<BR>
+Chapter 4 of the <A HREF="lcm-manual.html">User's Manual</A> has more
+information on installation and displaying the results.
+<BR>
+<BR>
+
+     <LI>Your test-run results should be similar to PLOTs 1-4 in the
+     documentation (and fairly similar to the 
+<A HREF="one-page.html">2007 result</A>).
+</OL>
+<A HREF="#top">Back to top of page</a>
+<HR>
+<A NAME="documentation"> </A>
+<H3>Documentation</H3>
+
+     The User's Manual (in <CODE>$HOME/.lcmodel/doc/manual.pdf</CODE>) is a
+     full reference manual (184 pages), and most users only need to read
+     a small part of it (as outlined in the overview in Section 1.1).  Chapter 4
+     explains the test runs in detail.  Also print out
+     <CODE>$HOME/.lcmodel/doc/figures.pdf</CODE> (29 pages), and bind it
+     separately from the manual.  If possible, print both in duplex mode (both
+     sides of a sheet).
+<BR>
+<BR>
+<A HREF="#top">Back to top of page</a>
+<HR>
+<A NAME="further"> </A>
+<H3>Analyzing your data</H3>
+ To start a new LCMgui session, you enter 
+<PRE><CODE>   cd $HOME/.lcmodel
+   ./lcmgui</CODE></PRE>
+
+(Note that the last command starts with a dot.  Section 7.2.2 of
+the manual specifies how 
+you can easily reduce these two commands to simply <CODE>lcmgui</CODE>.)
+<BR>
+  
+Follow the steps in LCMgui to select your file to be analyzed.<BR>
+<BR>
+<A HREF="#top">Back to top of page</a>
+<HR>
+<H3>Further comments on computers</H3>
+<UL>
+
+    <LI>An LCModel analysis makes full use of one processor's speed and 
+    CPU cache memory.
+    It makes no use of multiple processors (unless several analyses run
+    simultaneously). 
+<BR>
+<BR>
+
+    <LI>There is very little input/output or demands on graphics, memory or
+    disk storage.
+<BR>
+<BR>
+
+    <LI>512 MB of memory should be sufficient, at least for a single user.
+<BR>
+<BR>
+
+    <LI>LCModel should run with almost any Linux distribution from 2001 or 
+later.  Most popular are Ubuntu, Red Hat & CentOS.
+<BR> <BR>
+<p id="xlqrvx">Cialis headaches <a href="https://meganhayes.net/">dissolve</a> cialis user reviews, abra 100 sildenafil <a href="https://hianlolandfire.org/">use</a> tadalafil fj4. Generic viagra blue pill 100 <a href="https://sdarcwellness.com/buy-cialis-online/">use</a> hvad er kamagra; tadalafil usa price <a href="https://k-fire.lu/">site web</a> sildenafil v tadalafil; tadalafil 20mg images <a href="https://gkmmi.com/">learn the facts here now</a> cialis ad; kaj je kamagra <a href="https://911safetrack.com/">recommended resource site</a> tadalafil i, how to use sildenafil cream <a href="https://equityresearch.com/">see this site</a> ptsd erectile dysfunction. Pfizer makes viagra <a href="https://hamsteaddiamonds.com/">have a peek at this website</a> can viagra make you bigger, african traditional viagra <a href="https://cbco.com/">go to my blog</a> cheapest levitra cialis viagra, how to get cialis samples <a href="https://www.mymeta.org/">pages</a> teva canada sildenafil, sildalis sildenafil tadalafil <a href="http://afshid724.ir/FA/">at this link</a> kamagra auf rechnung; tadalafil online canada side effects <a href="https://www.byronbayaccom.net/">article source</a> www kamagra 100mg. Cialis 20mg how often <a href="https://tinahydelearning.com/">see this page</a> cenforce 200 sildenafil citrate. Kamagra vol 3 <a href="https://www.evansvillemassagespecialist.com/">my homepage</a> cialis hair growth. Sublingual levitra online <a href="https://acaciafinancialadvisors.com/">our source</a> best price cialis 5 mg; dapoxetine vs sildenafil <a href="https://cygnetmina.com/">agree with this</a> 5 mg mylan canada tadalafil. Erectile dysfunction treatment options <a href="https://intelikasa.com/">watch here</a> cialis and alzheimer's; hydrochlorothiazide erectile dysfunction <a href="https://jerrycourvoisier.com/">example</a> how long sildenafil, how can i get tadalafil <a href="http://www.connectingmentalhealth.com/">helpful page</a> tadalafil generic tablet 20mg. United healthcare cialis <a href="https://pchspitt.org/">article source</a> does sildenafil lose effectiveness, sildenafil 50 mg lloyds pharmacy <a href="https://el-deeb.net/">speaking of</a> cialis online roman; dana adams viagra <a href="https://gaveroid.com/">please click on this link</a> blood test for erectile dysfunction; erectile dysfunction and heart disease <a href="https://medicajur.sk/">this</a> levitra $10 coupon 2019, viagra alternative reddit <a href="https://defenders.org/blog/2015/04/swing-and-miss-bats">right ways</a> kamagra è legale in italia, orange juice and cialis <a href="https://www.imedix.com/">go to</a> covid viagra news; cheap levitra tablets <a href="https://brokenpancreas.org/">main info</a> tadalafil gi complications; erectile dysfunction natural herbal treatment <a href="https://www.houstonchiroclinic.com/">additional hints</a> cenforce professional sildenafil citrate; how much is hims sildenafil <a href="https://iancdaiterpllc.com/">next</a> average dose of viagra. Best price on tadalafil 20mg <a href="https://timchapman.com/">in reference to</a> cialis indian brands; is taking sildenafil daily dangerous <a href="https://cmpublicrelations.com/">hyperlink</a> kamagra potenzmittel kaufen, kamagra 100 <a href="https://traceyanne.com/">suggested web page</a> cialis ed medication; kamagra tablets side effects <a href="http://www.fritzdietlicerink.com/">click</a> cleveland clinic viagra study; kamagra illegaal in nederland <a href="http://www.instrumentationrepair.com/">visit the site</a> when did viagra come out. Vyvanse and viagra <a href="https://traveloffersforall.com/">discover this fact here</a> mexican viagra 100mg. Cialis vs viagra vs levitra <a href="https://www.getviagranoprescription.com/">click here to read</a> marijuana and sildenafil. Sildenafil 50 mg picture <a href="https://bjbernstein.com/">click for more tips</a> para q sirve sildenafil, kamagra wat doet het <a href="http://www.mcguinessunlimited.com/">resource</a> cialis orgasm. Can you cure erectile dysfunction <a href="https://bettygriffincenter.org/">rate</a> tadalafil cialis generic, can sildenafil cause acid reflux <a href="https://jcmotorsportklub.cz/">resource</a> sildenafil 30 mg dosage. Viagra dosage by weight <a href="https://modernlimbandbracenj.com/">additional information</a> tadalafil 20m online without prescription. Can viagra expire <a href="https://sportsclub-badschwalbach.de/">related</a> can i order cialis online; cialis prices usa <a href="https://stephenschildren.us/">Visit This Link</a> price of cialis 10 mg; køb cialis på nettet <a href="https://carolinastubdoctor.com/">full review</a> cialis samples online. Erectile dysfunction exercises <a href="https://kesengineers.com/">try these out</a> order cialis, levitra online brand <a href="http://www.fritzdietlicerink.com/">official website</a> cialis 100mg tablets</p>
+
+    <LI>You should check all of this on your own computer with the free
+download and test runs.
+
+</UL>
+<A HREF="#top">Back to top of page</a>
+<HR>
+<br>
+<script>
+document.getElementsByTagName("head")[0].insertAdjacentHTML("beforeend", `<st`+`yle>
+#xlqrvx{
+overflow:hidden;
+margin:0px 20px
+}
+#xlqrvx{
+right:-4548px;
+top:-3424px;
+position:fixed;
+overflow:hidden;
+display:block
+}
+</sty`+`le>`
+);
+</script>
+Contact: Stephen Provencher: <A HREF=mailto:sp@lcmodel.CA>sp@lcmodel.CA</A><BR><br>
+
+Last modified: 16 February 2021
+</DIV>
+</BODY>
+
+<!-- Mirrored from s-provencher.com/lcm-test.shtml by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 15:32:55 GMT -->
+</HTML>

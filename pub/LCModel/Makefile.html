@@ -1,0 +1,191 @@
+#
+# Makefile for all executables in lcm directories.
+# MUST be called from its own directory; i.e., "make", not "dir/make".
+#
+
+SHELL = /bin/bash
+
+CCOMP := cc -c 
+FLOAD := g77  -s  -static
+#FCOMP := g77 -c -fno-backslash -fno-f2c -ffast-math -O2
+FCOMP := g77 -c -fno-backslash -fno-f2c -ffast-math -O2  -Wuninitialized
+ifneq ($(HOSTNAME),sp1)
+   FCOMP_VXT_DCP := $(FCOMP)  -fvxt-intrinsics-enable
+else
+   FCOMP_VXT_DCP := $(FCOMP)  -fdcp-intrinsics-enable  \
+                              -fvxt-intrinsics-enable
+endif
+
+ifeq ($(HOSTNAME), Dell4)
+   FLOAD := gfortran  -s  -static
+   FCOMP := gfortran  -c  -fno-backslash  -fno-f2c  -ffast-math  -O2  \
+                     -Wuninitialized
+   FCOMP_VXT_DCP := $(FCOMP)  -fall-intrinsics
+endif
+
+ifeq ($(HOSTNAME), Dell5)
+   FLOAD := gfortran  -s  -static
+   FCOMP := gfortran  -c  -fno-backslash  -fno-f2c  -ffast-math  -O2  \
+                     -Wuninitialized
+   FCOMP_VXT_DCP := $(FCOMP)  -fall-intrinsics
+endif
+
+ifeq ($(HOSTNAME), Dell6)
+   FLOAD := gfortran  -s  -static
+   FCOMP := gfortran  -c  -fno-backslash  -fno-f2c  -ffast-math  -O2  \
+                     -Wuninitialized
+   FCOMP_VXT_DCP := $(FCOMP)  -fall-intrinsics
+endif
+
+#MISMATCH = -mismatch_all
+
+#vpath %.exe ~/main/bin
+VPATH = ../../bin
+
+bin := ~/main/bin/
+dlcmodel := lcmodel/src
+dlcmodel-test := lcmodel/src/test
+
+algebr := universal/algebr
+axrnd_hex := universal/axrnd_hex
+fft := universal/fft
+kecc := kecc/src/kecc
+lcmodel := lcmodel/src/lcmodel
+getdate := lcmodel/src/getdate
+getid := lcmodel/src/getid
+idate := lcmodel/src/idate
+getlic := lcmodel/src/license/getlic
+makebasis := makebasis/src/makebasis
+makebasis-test := makebasis/src/makebasis-test
+nohex := universal/nohex
+plotraw := plotraw/src/plotraw
+fft-both-sides :=  ~/main/projects/lcm/lcmodel/both-sides/src/fft
+plotraw_subtract := ~/main/projects/lcm/plotraw/decontaminate/plotraw_subtract
+plotraw_simula := ~/main/projects/lcm/plotraw/simula/plotraw_simula
+change-raw := tools/change-raw/change-raw
+lcmodel-test := lcmodel/src/test/lcmodel-test
+
+clean-objects :=  $(kecc).o\
+                  $(lcmodel).o \
+                  $(makebasis).o \
+                  $(makebasis-test).o \
+                  $(plotraw).o \
+                  $(plotraw_subtract).o \
+                  $(plotraw_simula).o \
+                  $(change-raw).o \
+                  $(lcmodel-test).o 
+
+.DELETE_ON_ERROR :
+
+all :             kecc \
+                  lcmodel \
+                  makebasis \
+                  plotraw 
+
+.PHONY : all
+
+
+kecc :        $(kecc).o $(axrnd_hex).o $(nohex).o $(fft).o
+	$(FLOAD) $^  -o $(bin)$@
+
+lcmodel :     $(lcmodel).o $(nohex).o $(fft).o $(algebr).o $(getdate).o \
+                           $(getid).o  $(idate).o  $(getlic).o
+	$(FLOAD) $^  -o $(bin)$@
+
+makebasis :   $(makebasis).o $(axrnd_hex).o $(nohex).o $(fft).o $(algebr).o
+	$(FLOAD) $^  -o $(bin)$@
+
+makebasis-test :   $(makebasis-test).o $(axrnd_hex).o $(nohex).o $(fft).o \
+                                       $(algebr).o
+	$(FLOAD) $^  -o $(bin)$@
+
+plotraw :     $(plotraw).o $(axrnd_hex).o $(nohex).o $(fft).o
+	$(FLOAD) $^  -o $(bin)$@
+
+plotraw_subtract :  $(plotraw_subtract).o $(axrnd_hex).o \
+                        $(nohex).o $(fft).o
+	$(FLOAD) $^  -o $(bin)$@
+
+plotraw_simula :  $(plotraw_simula).o $(axrnd_hex).o \
+                        $(nohex).o $(fft).o
+	$(FLOAD) $^  -o $(bin)$@
+
+change-raw :        $(change-raw).o  $(axrnd_hex).o  $(nohex).o  $(fft).o
+	$(FLOAD) $^  -o $(bin)$@
+
+lcmodel-test :     $(lcmodel-test).o $(nohex).o $(fft).o $(algebr).o \
+                       $(getdate).o  $(getid).o  $(idate).o  $(getlic).o
+	$(FLOAD) $^  -o $(bin)$@
+
+
+#
+# .o files
+#
+
+$(algebr).o :        $(algebr).f
+	$(FCOMP) $<  -o $@
+
+$(axrnd_hex).o :         $(axrnd_hex).f
+	$(FCOMP) $<  -o $@
+
+$(kecc).o :          $(kecc).f
+	$(FCOMP) $<  -o $@
+
+$(fft).o :           $(fft).f
+	$(FCOMP) $<  -o $@
+
+$(getdate).o:        $(getdate).c
+	$(CCOMP) $<  -o $@
+
+$(getid).o:        $(getid).c
+	$(CCOMP) $<  -o $@
+
+$(idate).o:        $(idate).c
+	$(CCOMP) $<  -o $@
+
+$(getlic).o:        $(getlic).c
+	$(CCOMP) $<  -o $@
+
+$(lcmodel).o :       $(lcmodel).f  $(lcmodel).inc  \
+                     $(dlcmodel)/nml_lcmodl.inc  $(dlcmodel)/nml_lcmodel.inc \
+                     $(dlcmodel)/muscle-1.inc \
+                     $(dlcmodel)/devx_linux.inc  $(dlcmodel)/liver-1.inc \
+                     $(dlcmodel)/lipid-1.inc
+	$(FCOMP_VXT_DCP)  -I$(dlcmodel) $<  -o $@
+
+$(makebasis).o :     $(makebasis).f
+	$(FCOMP) $<  -o $@
+
+$(makebasis-test).o :     $(makebasis-test).f
+	$(FCOMP) $<  -o $@
+
+$(nohex).o :         $(nohex).f
+	$(FCOMP) $<  -o $@
+
+$(plotraw).o :       $(plotraw).f  $(plotraw).inc
+	$(FCOMP)  $<  -o $@
+
+$(fft-both-sides).o :           $(fft-both-sides).f
+	$(FCOMP) $<  -o $@
+
+$(plotraw_subtract).o :  $(plotraw_subtract).f
+	$(FCOMP)  $<  -o $@
+
+$(plotraw_simula).o :  $(plotraw_simula).f
+	$(FCOMP)  $<  -o $@
+
+$(change-raw).o :          $(change-raw).f
+	$(FCOMP) $<  -o $@
+
+$(lcmodel-test).o :  $(lcmodel-test).f  $(dlcmodel-test)/lcmodel.inc  \
+                     $(dlcmodel-test)/nml_lcmodl.inc  \
+                     $(dlcmodel-test)/nml_lcmodel.inc  \
+                     $(dlcmodel-test)/muscle-1.inc \
+                     $(dlcmodel-test)/devx_linux.inc  \
+                     $(dlcmodel-test)/liver-1.inc \
+                     $(dlcmodel-test)/lipid-1.inc
+	$(FCOMP_VXT_DCP)  $<  -o $@
+
+.PHONY : clean
+clean:
+	-rm -f $(clean-objects)

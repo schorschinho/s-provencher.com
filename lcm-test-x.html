@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from s-provencher.com/lcm-test-x.shtml by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 15:35:20 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Connecting to X windows</title>
+
+<style type="text/css">
+ body{
+  margin:10;
+  padding:10px 0 0 150px;
+  padding:0 0 0 175px;
+  background:#ccc;
+  background:#e0ffff;
+ }
+ div#left-sidebar{
+  position:absolute;
+  top:10px;
+  left:0;
+  width:175px;
+  background:#ccc;
+  background:#e0ffff;
+  color: #000;
+ }
+ div#content{
+  background:#fff;
+ }
+ @media screen{
+  body>div#left-sidebar{
+   position:fixed;
+  }
+ }
+ * html body{
+  overflow:hidden;
+ }
+ * html div#content{
+  height:100%;
+  overflow:auto;
+ }
+</style>
+
+</head>
+
+<body>
+<div id="left-sidebar">
+ <ul>
+ <li><a href="lcmodel.html">LCModel home</a></li><br>
+ <hr>
+ <li><a href="one-page.html">brain</a></li>
+ <li><a href="fig-weak-naa.html">brain tumor</a></li>
+ <li><a href="fig-strong-lipid.html">brain + lipids</a></li>
+ <li><a href="fig-lipid-1.html">bone</a></li>
+ <li><a href="fig-breast-1.html">breast</a></li>
+ <li><a href="fig-liver-1.html">liver</a></li>
+ <li><a href="fig-muscle.html">muscle</a></li>
+ <li><a href="fig-mega.html">MEGA-PRESS</a></li><br>
+ <hr>
+ <li><a href="lcm-test.html">free download</a></li>
+ <li><a href="lcm-license.html">license</a></li>
+ <li><a href="lcm-applications.html">early applications</a></li>
+ <li><a href="file-selector.html">analysis Step 1</a></li>
+ <li><a href="control-parameters.html">analysis Step 2</a></li>
+ <li><a href="lcm-manual.html">user manual</a></li>
+ <li><a href="asia.html">Japan and China</a></li>
+ </ul>
+</div>
+
+
+<div id="content">
+
+<CENTER><H1>Connecting with X windows</H1></CENTER>
+
+<P>
+<FONT SIZE="3">
+     If you get a message about not being able to open or connect to a
+     display, then LCMgui is probably installed on a remote computer.
+     Installation-dependent security measures may cause this.  Otherwise, you
+     may only need to inform your local computer and remote computer about 
+each other and X windows.
+<P>
+	All of this can be avoided by using a display directly connected to the
+	computer with LCMgui.  If this is impractical, then try informing
+	the two partners with the following two commands:
+<BR>
+<BR>
+<BR>
+<H2>Telling your local display</H2>
+    Log onto your <STRONG>local</STRONG> computer and then enter:
+     <PRE><CODE>   xhost +yyy.yyy.yyy.yyy</CODE></PRE>
+     Here, <CODE>yyy.yyy.yyy.yyy</CODE> is the IP address of your
+<STRONG>remote</STRONG> computer.  An example is <CODE>142.87.102.2</CODE>.
+<BR>
+<BR>
+     (You cannot use symbolic host names of the form 
+<CODE>mycomp.mlab.myu.edu</CODE>; only the numeric IP addresses of the form 
+<CODE>yyy.yyy.yyy.yyy</CODE> will work.  In the long term, you may want to
+replace <CODE>xhost</CODE> with a more secure method.)
+<BR>
+<BR>
+<BR>
+<H2>Telling your remote computer</H2> 
+
+    Now, still on your local computer, connect to your remote computer with 
+  <PRE><CODE>    ssh  -X  -l your_remote_username  yyy.yyy.yyy.yyy</CODE></PRE>
+where <CODE>-X</CODE> is upper case, <CODE>-l</CODE> is lower case
+<CODE>L</CODE> and <CODE>yyy.yyy.yyy.yyy</CODE> is again 
+the IP address of your remote computer.
+<BR>
+<BR>
+    Then start <CODE>lcmgui</CODE> with
+    <PRE><CODE>    ~/.lcmodel/lcmgui</CODE></PRE> 
+<HR>
+<BR>
+<BR>
+If there is an error message of the form "<CODE>...couldn't connect to display
+"localhost:??.0"</CODE>", enter
+<PRE><CODE>    export DISPLAY=127.0.0.1:??.0</CODE></PRE>
+that is, you simply replace <CODE>localhost</CODE> with 
+<CODE>127.0.0.1</CODE>; so, be sure to 
+replace <CODE>??.0</CODE> above with the actual number at the end of 
+the error message (often <CODE>10.0</CODE>).  Put no spaces on either side of 
+the <CODE>=</CODE> sign.
+<BR>
+<BR>
+If you get a message that the command <CODE>export</CODE> is not found, then
+enter:
+<PRE><CODE>    setenv DISPLAY 127.0.0.1:??.0</CODE></PRE>
+<BR>
+<BR>
+If, instead, there is an error message of the form "<CODE>... couldn't 
+connect to display...</CODE>", but with <CODE>"localhost"</CODE> missing from 
+the message, then enter 
+<PRE><CODE>    export DISPLAY=xxx.xxx.xxx.xxx:0</CODE></PRE>
+where <CODE>xxx.xxx.xxx.xxx</CODE> is the IP address of your
+<STRONG>local</STRONG> computer.
+<BR>
+<BR>
+<BR>
+<BR>
+In either case, now try again with
+    <PRE><CODE>    ~/.lcmodel/lcmgui</CODE></PRE>
+<BR>
+<BR>
+
+<H3> Possible additional Linux settings</H3>
+Recent Linux distributions can require that a configuration file be edited.  
+With 
+the GNOME window manager, the file is typically <CODE>/etc/X11/gdm.conf</CODE>
+or <CODE>/etc/opt/gnome/gdm/gdm.conf</CODE> 
+(or <CODE>/etc/gdm/custom.conf</CODE> with Fedora Core 5).  Change the line
+<CODE>DisallowTCP=true</CODE> to 
+      <PRE><CODE>   DisallowTCP=false</CODE></PRE>
+
+Reportedly with KDE, the file is typically <CODE>/etc/kde3/kdm/kdmrc</CODE> 
+(but the directory may very well differ).  Comment out
+<CODE>ServerArgsLocal=-nolisten tcp</CODE> with a <CODE>#</CODE>:
+      <PRE><CODE>   #ServerArgsLocal=-nolisten tcp</CODE></PRE>
+Then restart GNOME or X windows.
+<BR>
+<BR>
+Older Linux distributions will not have these strings and should not need 
+changes.  High-security installations may need more changes.  Newer 
+distributions may need other changes.  Sometimes remote X windows will work
+with some applications (such as <CODE>xclock</CODE>) and not work with others
+(such as <CODE>lcmgui</CODE>).  Ask your system manager.  Internet 
+search engines can also help you 
+find a solution for your Linux distribution.
+<BR>
+<BR>
+<BR>
+<BR>
+<H2>Further help</H2>
+     If problems or questions remain, send the complete 
+error message to <A
+     HREF=mailto:sp@lcmodel.CA>sp@lcmodel.CA</A>
+<BR><br>
+
+Last modified: 18 November 2016
+</DIV>
+</BODY>
+
+<!-- Mirrored from s-provencher.com/lcm-test-x.shtml by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 23 Nov 2025 15:35:20 GMT -->
+</HTML>
